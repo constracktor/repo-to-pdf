@@ -226,10 +226,10 @@ class RepoToPDF:
 
 
 class DisplayablePath(object):
-    display_filename_prefix_middle = "├──"
-    display_filename_prefix_last = "└──"
+    display_filename_prefix_middle = "|-"
+    display_filename_prefix_last = "|-"
     display_parent_prefix_middle = "    "
-    display_parent_prefix_last = "│   "
+    display_parent_prefix_last = "|   "
 
     def __init__(self, path, parent_path, is_last):
         self.path = Path(str(path))
