@@ -13,43 +13,19 @@ class RepoToPDF:
     """
     This class convert repository to pdf where this must be already cloned
     """
-    # Standard Stuffs
     gitignore_stuff = [
+        ".svg",
         ".pdf",
         "__init__.py",
         "__pycache__",
         ".gitignore",
         ".git/",
         "LICENSE",
-        ".github/",
-        "README.md",
+        #"README.md",
         "requirements.txt",
-        "pyproject.toml", "poetry.lock",
-        "Pipfile", "Pipfile.lock",
-        ".idea/",
-        "env-sample",
-        ".flake8",
-        ".yml", ".xml", ".txt",
-        "setup.cfg", "Procfile"
-        "pytest.ini",
-    ]
-    # Django Stuffs
-    gitignore_stuff += [
-        "manage.py",
-        "migrations/",
-        "static/",
-        "test_files/",
-        "test/",
-        "tests/",
-        "testes/",
-        "test.py",
-        "tests.py",
-        "wsgi.py",
-        "asgi.py",
-        "settings.py",
     ]
 
-    def __init__(self, directory, style="colorful"):
+    def __init__(self, directory, style="igor"):
         self.directory = Path(str(directory))
         self.style = style
         self.name_repository = str(directory).strip(os.sep).split(os.sep)[-1]
@@ -59,7 +35,7 @@ class RepoToPDF:
 
     def ignore_files(self) -> List[str]:
         """
-        Scrap the gitignore file it it exists and prepare all the stuffs that must be ignored.
+        Scrap the gitignore file if it exists and prepare all the stuffs that must be ignored.
         :return: List of strings, that depicts the files/folders scrapped from .gitignore file.
         """
 
@@ -336,12 +312,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         prog="Repository to PDF",
         description="This program convert a repository to PDF",
-        epilog="Enjoy the program! :)",
     )
     parser.add_argument("dir", type=Path, help="Path of the repository.")
     parser.add_argument(
         "--style",
-        default="colorful",
+        default="igor",
         type=str,
         help="Style for the PDF. Choose a style -> https://pygments.org/styles/",
     )
